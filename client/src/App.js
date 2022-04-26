@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// Bootstrap components
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from "react-bootstrap/Container";
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
+// App components
+import Todos from './components/todos/Todos.mjs';
+import Add from './components/add/Add.mjs';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
+              <Tab eventKey="add" title="Add">
+                <Add />
+              </Tab>
+              <Tab eventKey="todo" title="Todo">
+                <Todos url=''/>
+              </Tab>
+            </Tabs>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
