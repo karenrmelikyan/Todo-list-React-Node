@@ -1,15 +1,15 @@
 import express from 'express';
-import { getData, addData, updateData, deleteData } from '../controllers/todo.mjs';
+import { get, add, update, remove } from '../controllers/todo.mjs';
 
 const router = express.Router();
 
-router.get('/', getData);
+router.get('/', get);
 
-router.post('/', addData);
+router.post('/', add);
 
-router.put('/', updateData);
+router.put('/', update);
 
-router.delete('/', deleteData);
+router.delete('/', remove);
 
 export default router;
 

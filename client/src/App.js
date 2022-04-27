@@ -1,10 +1,7 @@
 // Bootstrap components
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from "react-bootstrap/Container";
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { Container, Tabs, Tab, Col, Row } from "react-bootstrap";
+
 
 // App components
 import Todos from './components/todos/Todos.mjs';
@@ -20,8 +17,8 @@ function App() {
               <Tab eventKey="add" title="Add">
                 <Add />
               </Tab>
-              <Tab eventKey="todo" title="Todo">
-                <Todos url=''/>
+              <Tab eventKey="todos" title="Todos">
+                <Todos />
               </Tab>
             </Tabs>
           </Col>

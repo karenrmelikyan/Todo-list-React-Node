@@ -1,32 +1,36 @@
+import {React, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import Todo from '../todo/Todo.mjs';
 
-//import Todo from '../todo/Todo.mjs';
+export default function Todos() {
+    const [todos, setTodos] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch('http://localhost:5000/api/todo');
+            const json = await response.json();
 
-export default async function Todos(props) {
+            setTodos(json);
+        };
 
-    // const res = await fetch(props.url, {method: 'GET'});
-    // const data = await res.json();
+        fetchData();
+    }, []);
 
+    
     return (
-      
-            <Table striped bordered hover size="sm">
-            <thead>
+        <Table striped bordered hover size="sm">
+           <thead>
                 <tr>
-                <th>#</th>
-                <th>Day</th>
-                <th>To do</th>
+                    <th>#</th>
+                    <th>Day</th>
+                    <th>To do</th>
                 </tr>
             </thead>
             <tbody>
-                {/* <Todo day='monday' todo='To buy milk'/>
-                <Todo day='monday' todo='To buy milk'/>
-                <Todo day='monday' todo='To buy milk'/>
-                <Todo day='monday' todo='To buy milk'/> */}
-
-                
+                {
+                    todos.map((todo) => <Todo key={todo._id} id={todo._id} day={todo.day} message={todo.todo} />)
+                }
             </tbody>
-            </Table>
-        
+        </Table>
     );
 }
 

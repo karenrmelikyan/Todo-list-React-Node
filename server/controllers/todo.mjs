@@ -1,15 +1,15 @@
 import Todo from '../models/todo.mjs';
 
-export async function getData(req, res) {
+export async function get(req, res) {
    try {
-      const data = await Todo.find();
-      res.status(200).json(data);
+        const data = await Todo.find();
+        res.status(200).json(data);
    } catch (err) {
        console.log(err.message);
    }
 }
 
-export async function addData(req, res) {
+export async function add(req, res) {
     const data = req.body;
     try {
         await Todo.create(data);
@@ -19,21 +19,21 @@ export async function addData(req, res) {
     }
 }
 
-export async function updateData(req, res) {
+export async function update(req, res) {
     const data = req.body;
     try {
-      await Todo.where({'_id': data._id}).updateOne(data);
-      res.status(200).json(data);
+        await Todo.where({'_id': data._id}).updateOne(data);
+        res.status(200).json(data);
     } catch (err) {
         console.log(err.message);
     }
 }
 
-export async function deleteData(req, res) {
+export async function remove(req, res) {
     const data = req.body;
     try {
-      await Todo.remove({'_id': data._id})
-      res.status(200).json({});
+        await Todo.remove({'_id': data._id})
+        res.status(200).json({});
     } catch (err) {
         console.log(err.message);
     }

@@ -1,9 +1,11 @@
-export default function Todo(props) {
+import React from "react";
+
+export default function Todo({id, day, message}) {
     return(
         <tr>
-        <td>1</td>
-        <td>{props.day}</td>
-        <td>{props.todo}</td>
+            <td>{id}</td>
+            <td>{day}</td>
+            <td>{message}</td>
         </tr>
     );
 }

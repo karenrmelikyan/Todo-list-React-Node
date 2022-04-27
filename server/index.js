@@ -2,12 +2,14 @@ import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 import todoRoute from './routes/todo.mjs';
+import cors from 'cors';
 
 // init
 const APP_PORT = process.env.APP_PORT;
 const app = express();
 
 // routes
+app.use(cors());
 app.use(express.json());
 app.use('/api/todo', todoRoute);
 
