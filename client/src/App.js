@@ -13,11 +13,16 @@ function App() {
       <Container>
         <Row className="justify-content-md-center">
           <Col md="auto">
+            <div align="center">
+              <br></br>
+                <h6>To Do List</h6>
+              <br></br>
+            </div>
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
               <Tab eventKey="add" title="Add">
                 <Add />
               </Tab>
-              <Tab eventKey="todos" title="Todos">
+              <Tab eventKey="list" title="List">
                 <Todos />
               </Tab>
             </Tabs>

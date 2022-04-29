@@ -5,14 +5,14 @@ import Todo from '../todo/Todo.mjs';
 export default function Todos() {
     const [todos, setTodos] = useState([]);
     useEffect(() => {
-        const fetchData = async () => {
+        async function fetchData() {
             const response = await fetch('http://localhost:5000/api/todo');
             const json = await response.json();
 
             setTodos(json);
         };
 
-        fetchData();
+        fetchData(); 
     }, []);
 
     
@@ -23,11 +23,12 @@ export default function Todos() {
                     <th>#</th>
                     <th>Day</th>
                     <th>To do</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {
-                    todos.map((todo) => <Todo key={todo._id} id={todo._id} day={todo.day} message={todo.todo} />)
+                { 
+                    todos.map((todo) => <Todo key={todo._id} id={todo._id} day={todo.day} todo={todo.todo} />) 
                 }
             </tbody>
         </Table>

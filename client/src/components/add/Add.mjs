@@ -1,10 +1,11 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 export default function Add() {
 
     const [day, setDay] = useState('');
     const [todo, setTodo] = useState('');
+    const [isSent, setIsSent] = useState(false);
 
     function dayHandler(event) {
        setDay(event.target.value);
@@ -17,7 +18,7 @@ export default function Add() {
     async function sendData(event) {
         event.preventDefault();
     
-        await fetch('http://localhost:5000/api/todo/', {
+        const response = await fetch('http://localhost:5000/api/todo/', {
             method: 'POST',
             body: JSON.stringify ({
                 day: day,
@@ -29,9 +30,21 @@ export default function Add() {
                 'Content-Type': 'application/json'
             }
         });   
+         
+        response.status === 201 ? setIsSent(true) : setIsSent(false) ;
     }
 
+    useEffect(() => {
+
+        setTimeout(() => {
+            setIsSent(false);
+        }, 2000);
+        
+    }, [isSent]);
+
     return (
+        <> 
+        { !isSent ?
         <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Day</Form.Label>
@@ -46,6 +59,9 @@ export default function Add() {
                 Add
             </Button>
         </Form>
+        : <h1>SENT!!!</h1>
+        }
+        </>
     );
 }
 
