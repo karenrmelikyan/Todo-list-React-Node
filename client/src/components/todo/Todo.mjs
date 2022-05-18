@@ -3,8 +3,8 @@ import { Button } from 'react-bootstrap';
 
 export default function Todo({id, day, todo}) {
 
-    async function remove(event, id) {
-        const response = await fetch('http://localhost:5000/api/todo/', {
+    async function remove(id) {
+        await fetch('http://localhost:5000/api/todo/', {
             method: 'DELETE',
             body: JSON.stringify ({
                 _id: id,
@@ -17,7 +17,6 @@ export default function Todo({id, day, todo}) {
         });   
     }
 
-
     return(
         <tr>
             <td>{id}</td>
@@ -25,7 +24,7 @@ export default function Todo({id, day, todo}) {
             <td>{todo}</td>
             <td>
                 <Button>Edit</Button>
-                <Button variant="danger" onClick={ (event) => remove(event, id) }>X</Button>
+                <Button variant="danger" onClick={() => remove(id)}>X</Button>
             </td>
         </tr>
     );

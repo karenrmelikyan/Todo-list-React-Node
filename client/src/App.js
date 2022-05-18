@@ -1,7 +1,5 @@
 // Bootstrap components
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Tabs, Tab, Col, Row } from "react-bootstrap";
-
 
 // App components
 import Todos from './components/todos/Todos.mjs';

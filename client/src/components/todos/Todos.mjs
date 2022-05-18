@@ -1,21 +1,21 @@
-import {React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import Todo from '../todo/Todo.mjs';
 
 export default function Todos() {
     const [todos, setTodos] = useState([]);
+
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('http://localhost:5000/api/todo');
             const json = await response.json();
 
             setTodos(json);
-        };
+        }
 
         fetchData(); 
-    }, []);
+    });
 
-    
     return (
         <Table striped bordered hover size="sm">
            <thead>
